@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-import AppText from "/AppText";
+import AppText from "./AppText";
 import colors from "../config/colors";
 
 function Card({ title, subTitle, image }) {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   detailsContainer: {
-    pading: 20,
+    padding: 20,
   },
   image: {
     width: "100%",
