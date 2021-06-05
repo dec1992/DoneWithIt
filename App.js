@@ -1,15 +1,8 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useState } from "react";
 
-import AppPicker from "./app/components/AppPicker";
-import AppTextInput from "./app/components/AppTextInput";
-import Screen from "./app/components/Screen";
+import LoginScreen from "./app/screens/LoginScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 
 export default function App() {
-  return (
-    <Screen>
-      <AppTextInput icon="email" placeholder="email" />
-      <AppPicker icon="apps" placeholder="category" />
-    </Screen>
-  );
+  return <RegisterScreen />;
 }
