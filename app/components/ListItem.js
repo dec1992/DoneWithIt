@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, StyleSheet, TouchableHighlight, View } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "./AppText";
 import colors from "../config/colors";
-import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 
 function ListItem({
   title,
@@ -20,6 +13,7 @@ function ListItem({
   IconComponent,
   onPress,
   renderRightActions,
+  renderChevrons,
 }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
@@ -28,9 +22,22 @@ function ListItem({
           {IconComponent}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText numberOfLines={1} style={styles.title}>
+              {title}
+            </AppText>
+            {subTitle && (
+              <AppText style={styles.subTitle} numberOfLines={2}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
+          {renderChevrons && (
+            <MaterialCommunityIcons
+              color={colors.medium}
+              name="chevron-right"
+              size={25}
+            />
+          )}
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -40,10 +47,12 @@ function ListItem({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    alignItems: "center",
     padding: 15,
     backgroundColor: colors.white,
   },
   detailsContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
